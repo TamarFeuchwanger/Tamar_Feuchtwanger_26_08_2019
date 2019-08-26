@@ -5,7 +5,11 @@
 <div class="main">
 <!-- Another variation with a button -->
 <div class="input-group">
-    <input type="text" class="form-control" placeholder="Search a city..." >
+    <!--\<input type="text" class="form-control" placeholder="Search a city..." #search (change)="setAutoCompleate(search.value)">
+  -->
+  <p-autoComplete [(ngModel)]="val" [suggestions]="cities" (completeMethod)="setAutoCompleate($event)"
+   field="LocalizedName" (onSelect)="selectCity($event)"></p-autoComplete>
+
         <div class="input-group-append">
         <button class="btn btn-secondary" type="button" (click)="getCurrentCity()">
         <i class="fa fa-search" style="font-size:36px;"></i>
@@ -26,6 +30,6 @@
  </div>
 </form> -->
 
-<app-weather-details *ngIf="weatherServ.isDetails==true"></app-weather-details>
+<app-weather-details *ngIf="selectCity" [city]="selectCity"></app-weather-details>
 <router-outlet></router-outlet>
 </div>

@@ -15,6 +15,14 @@ import { WeatherService } from './Services/weather.service';
 import { FooterComponent } from './General/footer/footer.component';
 import { FavoriteCityComponent } from './Favorites/favorite-city/favorite-city.component';
 
+import {AutoCompleteModule} from 'primeng/autocomplete';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations'
+import {FormsModule} from '@angular/forms'
+import { ApiService } from './Services/api.service';
+import { ErroePageComponent } from './General/erroe-page/erroe-page.component';
+
+ 
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,16 +32,21 @@ import { FavoriteCityComponent } from './Favorites/favorite-city/favorite-city.c
     WeatherDetailsComponent,
     FavoritesComponent,
     FooterComponent,
-    FavoriteCityComponent
+    FavoriteCityComponent,
+    ErroePageComponent
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
     RouterModule,
-    RouterModule.forRoot( LandingRoutes)
+    RouterModule.forRoot( LandingRoutes),
+    FormsModule,
+    AutoCompleteModule,
+    BrowserAnimationsModule
+    
   ],
-  providers: [WeatherService],
+  providers: [ApiService,WeatherService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

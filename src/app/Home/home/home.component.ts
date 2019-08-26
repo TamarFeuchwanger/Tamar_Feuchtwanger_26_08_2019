@@ -9,12 +9,27 @@ import { WeatherService } from 'src/app/Services/weather.service';
 })
 export class HomeComponent implements OnInit {
 
-constructor(private weatherServ:WeatherService) {}
+  constructor(private weatherServ: WeatherService) { }
+  val:string;
+  getCurrentCity() { }
+  //cities: [{ [key: string]: any }];
+  cities:[];
+  selectedCity:any;
+  ngOnInit() {
+    this.weatherServ.isDetails = true;
+  }
+  setAutoCompleate(event) {
+    this.weatherServ.getCity(event.query, (cities) => {
+      this.cities =cities;
+     /* cities.forEach(city => {
+        this.cities[city.LocalizedName] = city;
+      });*/
 
-getCurrentCity() {}
-
-ngOnInit() {
-  this.weatherServ.isDetails=true;
-}
+    });
+    
+  }
+  selectCity(e){
+   this.selectCity =e;
+  }
 
 }
