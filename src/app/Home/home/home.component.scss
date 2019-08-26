@@ -15,10 +15,23 @@ div {
     margin: 50px auto;
     position: absolute;
     top:9%;
-    left:28%;
+    left:30%;
+    
 }
 
-/* Bootstrap 4 text input with search icon */
+.srch {
+//    position: absolute;
+//     z-index: 2;
+//     display: block;
+//     width: 2.375rem;
+//     height: 2.375rem;
+//     line-height: 2.375rem;
+//     text-align: center;
+//     pointer-events: none;
+//     color: #aaa;
+    padding-left: 2.375rem;
+}
+
 
 .has-search .form-control {
     padding-left: 2.375rem;

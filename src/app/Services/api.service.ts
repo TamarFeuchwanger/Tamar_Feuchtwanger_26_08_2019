@@ -21,11 +21,15 @@ export class ApiService {
   }
     this.http.get(url, { params: parametrs }).subscribe(
       res => 
+      {
       sucsses(res),
+      console.log(res)
+      },
       err =>
-      this.router.navigate(['/LandingPage/ErrorPage'])
+      console.log("error")
+      //this.router.navigate(['/LandingPage/ErrorPage'])
     );
-
   }
 
+  
 }

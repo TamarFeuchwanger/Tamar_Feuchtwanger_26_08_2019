@@ -2,9 +2,11 @@
 
 <!-- selected city name -->
 <div class="container border border-dark CD">
-<h1>Tel Aviv</h1>
+<h1>{{city.LocalizedName}}</h1>
+<!--Unit למה אני לא מצליחה לגשת לזה ואיך משרשרים גם את ה  -->
+<small>{{cityDetails|json}}</small>
 </div>
-{{city |json}}
+<!-- {{city |json}} -->
 <!-- <i class="fa fa-heart" aria-hidden="true"></i> -->
 
 <div class="container col-md addTF"> 
@@ -39,6 +41,5 @@
 </div>
 
 </div>
-
 
 </div>

@@ -13,15 +13,32 @@ export class WeatherDetailsComponent implements OnInit {
   constructor(private weatherServ:WeatherService) { }
 
   @Input() city:any;
-  closeDetails()
-  {
-  this.weatherServ.isDetails=false;
-  }
+
+  //משתנה לקבל את ערכי העיר החדשים
+  cityDetails:any;
 
   ngOnInit() {
-    
+    this.getCurrentCityWeather();
+    this.getCityNextFiveDays();
   }
 
+getCurrentCityWeather()
+{
+  this.weatherServ.getCityWeather(this.city.Key,(res) => {
+  this.cityDetails=res;
+  console.log(res);});  
+}
 
+getCityNextFiveDays()
+{
+  this.weatherServ.getCityNextDays(this.city.Key,(res) => {
+    this.cityDetails=res;
+    console.log(res);});  
+}
+
+closeDetails()
+{
+  this.city=null;
+}
 
 }
