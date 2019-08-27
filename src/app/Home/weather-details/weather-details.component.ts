@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { WeatherService } from 'src/app/Services/weather.service';
 import { Input } from '@angular/core';
-
+import { CookieService } from 'ngx-cookie-service';
+import { FavoritesService } from 'src/app/Services/favorites.service';
 
 @Component({
   selector: 'app-weather-details',
@@ -10,35 +11,41 @@ import { Input } from '@angular/core';
 })
 export class WeatherDetailsComponent implements OnInit {
 
-  constructor(private weatherServ:WeatherService) { }
+  constructor(
+    private weatherServ: WeatherService,
+    private favoriteServ: FavoritesService) { }
 
-  @Input() city:any;
-
-  //משתנה לקבל את ערכי העיר החדשים
-  cityDetails:any;
+  @Input() city: any;
+  @Output() onCanceled: EventEmitter<string> = new EventEmitter<string>();
+ 
+  cityWeather: any;
+  cityNextWeather: any ={};
 
   ngOnInit() {
     this.getCurrentCityWeather();
     this.getCityNextFiveDays();
   }
 
-getCurrentCityWeather()
-{
-  this.weatherServ.getCityWeather(this.city.Key,(res) => {
-  this.cityDetails=res;
-  console.log(res);});  
-}
+  getCurrentCityWeather() {
+    this.weatherServ.getCityWeather(this.city.Key, (res) => {
+      this.cityWeather = res;
+    });
+  }
 
-getCityNextFiveDays()
-{
-  this.weatherServ.getCityNextDays(this.city.Key,(res) => {
-    this.cityDetails=res;
-    console.log(res);});  
-}
+  getCityNextFiveDays()
+  {
+    this.weatherServ.getCityNextDays(this.city.Key, (res) => {
+    this.cityNextWeather = res;});
+  }
 
-closeDetails()
-{
-  this.city=null;
-}
+  addCityToFavorites()
+  {
+    this.favoriteServ.addCityToFavorites(this.city);
+  }
+
+  closeDetails()
+  {
+    this.onCanceled.emit('closed');
+  }
 
 }

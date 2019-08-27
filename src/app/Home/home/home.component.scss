@@ -11,12 +11,11 @@ div {
 }
 
 .main {
-    width: 50%;
-    margin: 50px auto;
+    // width: 50%;
+    // margin: 50px auto;
     position: absolute;
     top:9%;
-    left:30%;
-    
+    left:40%;  
 }
 
 .srch {
@@ -32,6 +31,9 @@ div {
     padding-left: 2.375rem;
 }
 
+.p-autoComplete{
+    padding-left: 2.375rem;
+}
 
 .has-search .form-control {
     padding-left: 2.375rem;

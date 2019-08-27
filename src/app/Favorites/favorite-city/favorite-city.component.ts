@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
+import { WeatherService } from 'src/app/Services/weather.service';
 
 @Component({
   selector: 'app-favorite-city',
@@ -7,9 +8,23 @@ import { Component, OnInit } from '@angular/core';
 })
 export class FavoriteCityComponent implements OnInit {
 
-  constructor() { }
+  constructor(private weatherServ: WeatherService) { }
+
+  @Input() city: any;
+
+  specificCity: any ={};
 
   ngOnInit() {
+    // this.getCityByID()
+    this.getCurrentCityWeather();
+  }
+
+
+
+  getCurrentCityWeather() {
+    this.weatherServ.getCityWeather(this.city.Key, (res) => {
+      this.specificCity = res[0];
+    });
   }
 
 }

@@ -1,7 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { WeatherService } from 'src/app/Services/weather.service';
-import { Router } from '@angular/router';
-// import { TouchSequence } from 'selenium-webdriver';
 
 @Component({
   selector: 'app-home',
@@ -10,48 +8,35 @@ import { Router } from '@angular/router';
 })
 export class HomeComponent implements OnInit {
 
-constructor(private weatherServ: WeatherService, private router:Router) { }
+  constructor(
+    private weatherServ: WeatherService,
+  ) { }
 
-//I can create a model and get the details of the object that the server return
+  //I can create a model and get the details of the object that the server return
 
-//הערך שהמשתמש כותב בתיבה עד שהוא מקבל א העיר
-  value:string;
-  // getCurrentCity() { }
-  
-  //רשימת ערים שהשרת מחזיר
-  cities:[];
+ string;
+ cities: [];
+ city: any;
+ currentWether: number;
 
- //העיר המסוימת שהמשתמש בחר
-  selectedCity:any;
+ ngOnInit() { }
 
-  cityKey:any;
-  //לקבל את המזג אויר העכשווי
-  currentWether:number;
+setAutoCompleate(event)
+{
+this.weatherServ.getCity(event.query, (cities) => {
+this.cities = cities;});
+}
 
-  ngOnInit() {}
+selectCity(e) 
+{
+  this.city = e;
+  console.log(this.selectCity)
+}
 
-  setAutoCompleate(event) {
-  this.weatherServ.getCity(event.query, (cities) => {
-    this.cities=cities;
-     /* cities.forEach(city => {
-        this.cities[city.LocalizedName] = city;
-      });*/
-    });  
-  }
-
-  selectCity(e){
-   this.selectCity = e;
-   console.log(this.selectCity)
-  }
-
-  emptySelectCity()
-  {
-  this.selectCity=null;
-  // this.router.navigate(['/LandingPage/HomePage']);
-  //לבדוק את זה
-  this.ngOnInit();
-  }
-
+emptySelectedCity()
+{
+this.city = null;
+}
 
 }
 

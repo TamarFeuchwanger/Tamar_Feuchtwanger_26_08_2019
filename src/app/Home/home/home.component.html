@@ -1,19 +1,19 @@
 <div>
-<!-- make it from css -->
 <img src='..\assets\images\view2.png' alt="about" class=" image" id="about"/>
 
 <div class="main">
 <div class="input-group">
 <p-autoComplete [(ngModel)]="value" [suggestions]="cities" (completeMethod)="setAutoCompleate($event)"
- field="LocalizedName" (onSelect)="selectCity($event)" (onClear)="emptySelectCity()" class="srch"></p-autoComplete>
+ field="LocalizedName" (onSelect)="selectCity($event)" (onClear)="emptySelectedCity()" class=""></p-autoComplete>
 <div class="input-group-append">
-  <button class="btn btn-secondary" type="button" (click)="getCurrentCity()">
+  <button class="btn btn-secondary" type="button" >
     <i class="fa fa-search" style="font-size:36px;"></i>
   </button>
 </div>
 </div>
 </div>
 
-<app-weather-details *ngIf="selectCity.Key!=null" [city]="selectCity"></app-weather-details>
+<!-- <app-weather-details *ngIf="city" [city]="city" (onCanceled)="city = null"></app-weather-details> -->
+<app-weather-details></app-weather-details> 
 <router-outlet></router-outlet>
-</div>
+</div> 
