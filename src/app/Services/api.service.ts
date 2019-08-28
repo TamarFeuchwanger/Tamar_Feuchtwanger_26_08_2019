@@ -10,8 +10,7 @@ export class ApiService {
 
   constructor(private http: HttpClient, private router: Router) { }
 
-  // private API_KEY = "GibikUWyxLFwd5eDuWKoIJeByjPcWeiQ";
-  private API_KEY = "G1dCWZOKfTMuOb3DKcISigUpRTmvm2N0";
+  private API_KEY = "GibikUWyxLFwd5eDuWKoIJeByjPcWeiQ";
 
   get(url: string, sucsses, params: { [id: string]: any } = {}) {
     var parametrs = new HttpParams();
