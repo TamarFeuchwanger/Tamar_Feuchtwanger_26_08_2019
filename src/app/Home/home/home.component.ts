@@ -16,6 +16,7 @@ export class HomeComponent implements OnInit {
  cities: [];
  city: any;
  currentWether: number;
+ value:any;
 
 ngOnInit()
 { }
