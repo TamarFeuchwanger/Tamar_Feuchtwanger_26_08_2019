@@ -20,8 +20,10 @@ export class WeatherDetailsComponent implements OnInit {
  
   cityWeather: any;
   cityNextWeather: any ={};
-
-  ngOnInit() {
+  favorite=true;
+ 
+  ngOnInit()
+  {
     this.getCurrentCityWeather();
     this.getCityNextFiveDays();
   }
@@ -46,6 +48,13 @@ export class WeatherDetailsComponent implements OnInit {
   closeDetails()
   {
     this.onCanceled.emit('closed');
+  }
+
+  getDay(s:string)
+  {
+    var stringDate = s;
+    var d= new Date(stringDate );
+    return d;
   }
 
 }

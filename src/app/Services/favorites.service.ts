@@ -11,10 +11,12 @@ constructor(private cookiesService: CookieService) {
   this.favorites = f ? JSON.parse(f) : [];
 }
 
-  favorites: { Key: string, Name: string }[];
+favorites: { Key: string, Name: string }[];
+
 
 addCityToFavorites(city: any) {
   this.favorites.push({ Key: city.Key, Name: city.LocalizedName });
   this.cookiesService.set('favorites', JSON.stringify(this.favorites));
   }
+
 }

@@ -1,7 +1,9 @@
 <div class="card border border-dark favCity">
-<h5 class="card-header text-center" style="width: 15rem;">{{city.Name}}</h5>
+<h1 class="card-header text-center" style="width: 15rem;">{{city.Name}}</h1>
 <div class="card-body">
-   <h5 class="card-title text-center">currently it's</h5>
-   <p class="card-text text-center"> {{specificCity.Temperature}}</p>
+   <h5 class="card-title text-center">{{specificCity.WeatherText}}</h5>
+   <h1 class="card-text text-center"> {{specificCity.Temperature.Metric.Value}} c</h1>
+   <br>
+   <br>
 </div>
 </div>

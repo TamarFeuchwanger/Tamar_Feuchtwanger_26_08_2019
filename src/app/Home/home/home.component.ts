@@ -12,14 +12,13 @@ export class HomeComponent implements OnInit {
     private weatherServ: WeatherService,
   ) { }
 
-  //I can create a model and get the details of the object that the server return
-
  string;
  cities: [];
  city: any;
  currentWether: number;
 
- ngOnInit() { }
+ngOnInit()
+{ }
 
 setAutoCompleate(event)
 {
@@ -30,7 +29,6 @@ this.cities = cities;});
 selectCity(e) 
 {
   this.city = e;
-  console.log(this.selectCity)
 }
 
 emptySelectedCity()

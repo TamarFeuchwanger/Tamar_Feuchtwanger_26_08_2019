@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { WeatherService } from 'src/app/Services/weather.service';
+import { JsonpClientBackend } from '@angular/common/http';
 
 @Component({
   selector: 'app-favorite-city',
@@ -10,21 +11,21 @@ export class FavoriteCityComponent implements OnInit {
 
   constructor(private weatherServ: WeatherService) { }
 
-  @Input() city: any;
+  @Input() city: any; 
 
-  specificCity: any ={};
+ specificCity: any ={};
 
-  ngOnInit() {
-    // this.getCityByID()
+  ngOnInit() 
+  {
     this.getCurrentCityWeather();
   }
 
+  getCurrentCityWeather() 
+  {
+  this.weatherServ.getCityWeather(this.city.Key, (res) => {
+  this.specificCity = res[0];
+  });
 
-
-  getCurrentCityWeather() {
-    this.weatherServ.getCityWeather(this.city.Key, (res) => {
-      this.specificCity = res[0];
-    });
   }
 
 }
